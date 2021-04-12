@@ -1,10 +1,9 @@
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Game {
     String name;
     int releaseYear;
-    Double sellingPrice;
+    private Double sellingPrice;
 
     public Game(String name, int releaseYear, Double sellingPrice) {
         this.name = name;
