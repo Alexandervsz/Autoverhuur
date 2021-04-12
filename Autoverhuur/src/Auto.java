@@ -17,6 +17,6 @@ public class Auto {
 
     @Override
     public String toString() {
-        return "\tautotype: " + type + " met de prijs per dag: " + prijsPerDag;
+        return type + " met de prijs per dag: " + prijsPerDag;
     }
 }

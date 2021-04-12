@@ -44,7 +44,7 @@ public class AutoHuur {
     public String toString() {
         String text = "";
         if (gehuurdeAuto != null) {
-            text += gehuurdeAuto.toString() + "\n";
+            text += "\tautotype: "+ gehuurdeAuto.toString() + "\n";
         } else {
             text += "\ter is geen auto bekend\n";
         }
