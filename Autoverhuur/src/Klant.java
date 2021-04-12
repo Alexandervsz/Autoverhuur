@@ -6,11 +6,11 @@ public class Klant {
         this.naam = naam;
     }
 
-    public Double getKortingsPercentage() {
+    public Double getKorting() {
         return kortingsPercentage;
     }
 
-    public void setKortingsPercentage(Double kortingsPercentage) {
+    public void setKorting(Double kortingsPercentage) {
         this.kortingsPercentage = kortingsPercentage;
     }
 
