@@ -1,6 +1,6 @@
 public class Klant {
-    String naam;
-    Double kortingsPercentage;
+    private final String naam;
+    private Double kortingsPercentage;
 
     public Klant(String naam) {
         this.naam = naam;

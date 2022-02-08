@@ -1,7 +1,7 @@
 public class AutoHuur {
-    int aantalDagen = 0;
-    Auto gehuurdeAuto;
-    Klant huurder;
+    private int aantalDagen = 0;
+    private Auto gehuurdeAuto;
+    private Klant huurder;
 
     public AutoHuur() {
     }

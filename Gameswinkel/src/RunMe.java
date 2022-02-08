@@ -1,5 +1,4 @@
 import java.time.LocalDate;
-
 public class RunMe {
     public static void main(String[] kwargs) {
         int releaseJaar1 = LocalDate.now().getYear() - 1; // 1 jaar geleden

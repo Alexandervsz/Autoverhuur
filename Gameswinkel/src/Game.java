@@ -1,8 +1,8 @@
 import java.time.LocalDate;
 
 public class Game {
-    String name;
-    int releaseYear;
+    private String name;
+    private int releaseYear;
     private Double originPrice;
 
     public Game(String name, int releaseYear, Double sellingPrice) {

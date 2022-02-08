@@ -1,6 +1,6 @@
 public class Auto {
-    String type;
-    Double prijsPerDag;
+    private final String type;
+    private Double prijsPerDag;
 
     public Auto(String type, Double prijsPerDag) {
         this.type = type;

@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
 public class Person {
-    ArrayList<Game> games = new ArrayList<>();
-    String name;
-    double budget;
+    private ArrayList<Game> games = new ArrayList<>();
+    private String name;
+    private double budget;
 
     public ArrayList<Game> getGames() {
         return games;
@@ -42,7 +42,7 @@ public class Person {
         if (game.getPrice() <= getBudget() && !checkinlist(game)) {
             setBudget(getBudget() - game.getPrice());
             games.add(game);
-            return game.name + " gekocht door " + name + " voor €" + round(game.getPrice()) + "\nNieuw budget: €" + round(budget);
+            return game.getName() + " gekocht door " + name + " voor €" + round(game.getPrice()) + "\nNieuw budget: €" + round(budget);
         } else {
             return "Deze persoon heeft niet voldoende budget, en/of bezit de game al.";
         }
@@ -54,7 +54,7 @@ public class Person {
             removeGame(game);
             buyer.setBudget(buyer.getBudget() - game.getPrice());
             setBudget(getBudget() + game.getPrice());
-            return name + " verkoopt " + game.name + " aan " + buyer.name + " voor €" + round(game.getPrice());
+            return name + " verkoopt " + game.getName() + " aan " + buyer.name + " voor €" + round(game.getPrice());
         } else {
             return "Deze gebruiker heeft niet voldoende budget, en/of bezit de game al.";
         }
