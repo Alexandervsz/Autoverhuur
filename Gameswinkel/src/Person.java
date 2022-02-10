@@ -1,11 +1,12 @@
-import java.util.ArrayList;
+import java.text.DecimalFormat;
+import java.util.LinkedHashSet;
 
 public class Person {
-    private ArrayList<Game> games = new ArrayList<>();
+    private final LinkedHashSet<Game> games = new LinkedHashSet<>();
     private String name;
     private double budget;
 
-    public ArrayList<Game> getGames() {
+    public LinkedHashSet<Game> getGames() {
         return games;
     }
 
@@ -39,53 +40,44 @@ public class Person {
     }
 
     public String koop(Game game) {
-        if (game.getPrice() <= getBudget() && !checkinlist(game)) {
+        if (game.getPrice() <= getBudget() && !getGames().contains(game)) {
             setBudget(getBudget() - game.getPrice());
             games.add(game);
-            return game.getName() + " gekocht door " + name + " voor €" + round(game.getPrice()) + "\nNieuw budget: €" + round(budget);
+            return "gelukt";
         } else {
-            return "Deze persoon heeft niet voldoende budget, en/of bezit de game al.";
+            return "niet gelukt";
         }
     }
 
     public String verkoop(Game game, Person buyer) {
-        if (!buyer.checkinlist(game) && checkinlist(game) && buyer.budget >= game.getPrice()) {
+        if (buyer.getBudget() >= game.getPrice() && getGames().contains(game) && !buyer.getGames().contains(game)) {
             buyer.addGame(game);
             removeGame(game);
             buyer.setBudget(buyer.getBudget() - game.getPrice());
             setBudget(getBudget() + game.getPrice());
-            return name + " verkoopt " + game.getName() + " aan " + buyer.name + " voor €" + round(game.getPrice());
+            return "gelukt";
         } else {
-            return "Deze gebruiker heeft niet voldoende budget, en/of bezit de game al.";
+            return "niet gelukt";
         }
     }
 
     @Override
     public String toString() {
         StringBuilder output = new StringBuilder();
-        if (games != null) {
-            for (Game game : getGames()) {
-                output.append(game.getName()).append(", uitgegeven in ").append(game.getReleaseYear()).append("; nieuwprijs: ").append(round(game.getOriginPrice())).append(" nu voor: ").append(round(game.getPrice()));
-                output.append("\n");
-            }
+        for (Game game : getGames()) {
+            output.append(game.toString());
+            output.append("\n");
         }
 
-        return getName() + " heeft een budget van €" + round(getBudget()) + " en bezit de volgende games:\n" + output;
+
+        return getName() + " heeft een budget van €" + round(getBudget(), 0.01) + " en bezit de volgende games:\n" + output;
     }
 
-    public double round(double number) {
-        double scale = Math.pow(10, 2);
-        return Math.round(number * scale) / scale;
+    public static String round(double number, double margin) {
+        number += margin;
+        DecimalFormat f = new DecimalFormat("##.00");
+        return f.format(number);
 
     }
 
-    public boolean checkinlist(Game checkGame) {
-        for (Game game : this.getGames()) {
-            if (game.getName().equals(checkGame.getName())) {
-                return true;
-            }
-
-        }
-        return false;
-    }
 }

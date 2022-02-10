@@ -6,16 +6,9 @@ public class AutoHuur {
     public AutoHuur() {
     }
 
-    public int getAantalDagen() {
-        return aantalDagen;
-    }
 
     public Auto getGehuurdeAuto() {
         return gehuurdeAuto;
-    }
-
-    public Klant getHuurder() {
-        return huurder;
     }
 
     public void setAantalDagen(int aantalDagen) {
@@ -44,12 +37,12 @@ public class AutoHuur {
     public String toString() {
         String text = "";
         if (gehuurdeAuto != null) {
-            text += "\tautotype: "+ gehuurdeAuto.toString() + "\n";
+            text += "\tautotype: "+ gehuurdeAuto + "\n";
         } else {
             text += "\ter is geen auto bekend\n";
         }
         if (huurder != null) {
-            text += "\top naam van: "+huurder.toString() + "\n";
+            text += "\top naam van: "+huurder + "\n";
         } else {
             text += "\ter is geen huurder bekend\n";
         }

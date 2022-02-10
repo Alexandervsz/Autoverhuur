@@ -1,9 +1,11 @@
 import java.time.LocalDate;
+import java.util.Objects;
+
 
 public class Game {
     private String name;
     private int releaseYear;
-    private Double originPrice;
+    private double originPrice;
 
     public Game(String name, int releaseYear, Double sellingPrice) {
         this.name = name;
@@ -39,4 +41,22 @@ public class Game {
         int currentYear = LocalDate.now().getYear();
         return originPrice * Math.pow(0.7, (currentYear - releaseYear));
     }
+
+    @Override
+    public String toString() {
+        return getName() + ", uitgegeven in " + getReleaseYear() + "; nieuwprijs: " + getOriginPrice() + " nu voor: €" + Person.round(getPrice(), -0.01);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof Game && Objects.equals(((Game) obj).getName(), this.getName());
+
+    }
+
+    @Override
+    public int hashCode() {
+        return getName().hashCode();
+    }
+
+
 }
